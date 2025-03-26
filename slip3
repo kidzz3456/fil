@@ -1,0 +1,181 @@
+activity main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/collegeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="College Name"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:layout_centerInParent="true" />
+
+    <Button
+        android:id="@+id/buttonRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Red"
+        android:layout_below="@id/collegeName"
+        android:layout_marginTop="20dp"
+        android:onClick="changeColor" />
+
+    <Button
+        android:id="@+id/buttonBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blue"
+        android:layout_below="@id/buttonRed"
+        android:layout_marginTop="20dp"
+        android:onClick="changeColor" />
+
+    <Button
+        android:id="@+id/buttonGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Green"
+        android:layout_below="@id/buttonBlue"
+        android:layout_marginTop="20dp"
+        android:onClick="changeColor" />
+
+    <Button
+        android:id="@+id/buttonMagenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Magenta"
+        android:layout_below="@id/buttonGreen"
+        android:layout_marginTop="20dp"
+        android:onClick="changeColor" />
+
+</RelativeLayout>
+
+
+main act.java
+package com.example.colorchange;
+
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    TextView clg;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        clg = findViewById(R.id.collegeName);
+    }
+
+    public void changeColor(View view) {
+        Button button = (Button) view;
+        String color = button.getText().toString().toLowerCase();
+
+        switch (color) {
+            case "red":
+                clg.setTextColor(Color.RED);
+                clg.setTextSize(24);
+                clg.setTypeface(null, Typeface.BOLD);
+                break;
+            case "blue":
+                clg.setTextColor(Color.BLUE);
+                clg.setTextSize(20);
+                clg.setTypeface(null, Typeface.ITALIC);
+                break;
+            case "green":
+                clg.setTextColor(Color.GREEN);
+                clg.setTextSize(28);
+                clg.setTypeface(null, Typeface.BOLD_ITALIC);
+                break;
+            case "magenta":
+                clg.setTextColor(Color.MAGENTA);
+                clg.setTextSize(14);
+                clg.setTypeface(null, Typeface.NORMAL);
+                break;
+        }
+    }
+}
+
+
+q2...
+act main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/et1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter a number"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Calculate Factorial" />
+
+</RelativeLayout>
+
+
+main act.java
+package com.example.factorialcalculator;
+
+import android.app.AlertDialog;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText num;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        num = findViewById(R.id.et1);
+        Button calc = findViewById(R.id.btn1);
+
+        calc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calculateFactorial();
+            }
+        });
+    }
+    private void calculateFactorial() {
+        String numberStr = num.getText().toString();
+        if (!numberStr.isEmpty()) {
+            int number = Integer.parseInt(numberStr);
+            int factorial = 1;
+            for (int i = 1; i <= number; i++) {
+                factorial *= i;
+            }
+            displayResult(factorial);
+        }
+    }
+    private void displayResult(int result) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Factorial Result");
+        builder.setMessage("The factorial is: " + result);
+        builder.setPositiveButton("OK", null);
+        builder.show();
+    }
+}

@@ -1,0 +1,275 @@
+.xmml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Enter text to style" />
+
+    <Button
+        android:id="@+id/buttonApply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editText"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        android:text="Apply" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonApply"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="16sp"
+        android:textStyle="normal" />
+
+</RelativeLayout>
+
+.java
+package com.example.allslipssolution;
+
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    private EditText editText;
+    private Button buttonApply;
+    private TextView textView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        editText = findViewById(R.id.editText);
+        buttonApply = findViewById(R.id.buttonApply);
+        textView = findViewById(R.id.textView);
+
+        buttonApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                applyStyles();
+            }
+        });
+    }
+
+    private void applyStyles() {
+        String text = editText.getText().toString();
+        textView.setText(text);
+        textView.setTextColor(Color.BLUE);
+        textView.setTextSize(20);
+        textView.setTypeface(Typeface.DEFAULT);
+
+        int colorIndex = (int) (Math.random() * 3);
+        switch (colorIndex) {
+            case 0:
+                textView.setTextColor(Color.RED);
+                break;
+            case 1:
+                textView.setTextColor(Color.GREEN);
+                break;
+            case 2:
+                textView.setTextColor(Color.YELLOW);
+                break;
+        }
+
+        int styleIndex = (int) (Math.random() * 3);
+        switch (styleIndex) {
+            case 0:
+                textView.setTypeface(Typeface.DEFAULT_BOLD);
+                break;
+            case 1:
+                textView.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD_ITALIC));
+                break;
+            case 2:
+                textView.setTypeface(Typeface.create(Typeface.MONOSPACE, Typeface.NORMAL));
+                break;
+        }
+        int randomSize = (int) (Math.random() * 9) + 16;
+        textView.setTextSize(randomSize);
+    }
+}
+
+q2....
+.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/editTextFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="First Name" />
+
+    <EditText
+        android:id="@+id/editTextMiddleName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Middle Name" />
+
+    <EditText
+        android:id="@+id/editTextLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Last Name" />
+
+    <EditText
+        android:id="@+id/editTextDOB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date of Birth" />
+
+    <EditText
+        android:id="@+id/editTextAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email ID" />
+
+    <Button
+        android:id="@+id/buttonSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
+</LinearLayout>
+
+sec.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textViewFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textViewMiddleName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textViewLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textViewDOB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textViewAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+
+main.java
+package com.example.allslipssolution;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        EditText firstNameInput = findViewById(R.id.editTextFirstName);
+        EditText middleNameInput = findViewById(R.id.editTextMiddleName);
+        EditText lastNameInput = findViewById(R.id.editTextLastName);
+        EditText dobInput = findViewById(R.id.editTextDOB);
+        EditText addressInput = findViewById(R.id.editTextAddress);
+        EditText emailInput = findViewById(R.id.editTextEmail);
+
+        Button submitButton = findViewById(R.id.buttonSubmit);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("firstName", firstNameInput.getText().toString());
+                intent.putExtra("middleName", middleNameInput.getText().toString());
+                intent.putExtra("lastName", lastNameInput.getText().toString());
+                intent.putExtra("dob", dobInput.getText().toString());
+                intent.putExtra("address", addressInput.getText().toString());
+                intent.putExtra("email", emailInput.getText().toString());
+                startActivity(intent);
+            }
+        });
+    }
+}
+
+sec.java
+package com.example.allslipssolution;
+
+import android.os.Bundle;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SecondActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+
+        TextView firstNameText = findViewById(R.id.textViewFirstName);
+        TextView middleNameText = findViewById(R.id.textViewMiddleName);
+        TextView lastNameText = findViewById(R.id.textViewLastName);
+        TextView dobText = findViewById(R.id.textViewDOB);
+        TextView addressText = findViewById(R.id.textViewAddress);
+        TextView emailText = findViewById(R.id.textViewEmail);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            firstNameText.setText("First Name: " + extras.getString("firstName"));
+            middleNameText.setText("Middle Name: " + extras.getString("middleName"));
+            lastNameText.setText("Last Name: " + extras.getString("lastName"));
+            dobText.setText("Date of Birth: " + extras.getString("dob"));
+            addressText.setText("Address: " + extras.getString("address"));
+            emailText.setText("Email ID: " + extras.getString("email"));
+        }
+    }
+}
+
+

@@ -1,0 +1,361 @@
+.xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Toggle Bulb"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="160dp"/>
+
+    <ImageView
+        android:id="@+id/bulbImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bulb_off"
+        android:layout_below="@id/toggleButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"/>
+
+</RelativeLayout>
+
+.java
+package com.example.allslipssolution;
+
+import android.os.Bundle;
+import android.widget.CompoundButton;
+import android.widget.ImageView;
+import android.widget.ToggleButton;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    private ImageView bulbImage;
+    private ToggleButton toggleButton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        bulbImage = findViewById(R.id.bulbImage);
+        toggleButton = findViewById(R.id.toggleButton);
+        bulbImage.setImageResource(R.drawable.bulb_off);
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bulbImage.setImageResource(R.drawable.bulb_on);
+                } else {
+                    bulbImage.setImageResource(R.drawable.bulb_off);
+                }
+            }
+        });
+    }
+}
+
+q2.......
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TableRow>
+        <TextView
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="80dp"
+            android:id="@+id/text_membership_form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Membership Form"
+            android:textStyle="bold"
+            android:textSize="24sp"/>
+    </TableRow>
+
+    <EditText
+        android:id="@+id/edit_full_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Enter Full Name"/>
+
+    <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender" />
+    </TableRow>
+
+    <TableRow>
+        <RadioGroup
+            android:id="@+id/rg1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/radio_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female" />
+
+            <RadioButton
+                android:id="@+id/radio_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Other" />
+        </RadioGroup>
+    </TableRow>
+
+    <TableRow>
+        <EditText
+            android:id="@+id/edit_current_weight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Current Weight"
+            android:inputType="number"/>
+        <EditText
+            android:id="@+id/edit_current_height"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Current Height"
+            android:inputType="number"/>
+    </TableRow>
+
+    <TableRow>
+        <EditText
+            android:id="@+id/edit_goal_weight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Goal Weight"
+            android:inputType="number"/>
+        <EditText
+            android:id="@+id/edit_age"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Age"
+            android:inputType="number"/>
+    </TableRow>
+
+    <TableRow>
+        <EditText
+            android:id="@+id/edit_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:inputType="number"/>
+    </TableRow>
+
+    <TableRow>
+        <EditText
+            android:id="@+id/edit_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address"/>
+    </TableRow>
+
+    <TableRow>
+
+        <CheckBox
+            android:id="@+id/checkbox_membership_rules"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I have read, understood and accepted the\nmembership rules" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUBMIT"/>
+</TableLayout>
+
+sec.xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/text_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_name"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/text_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_gender"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/text_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_weight"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/text_goal_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_height"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/text_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_goal_weight"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/text_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_age"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/text_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_phone"
+        android:textSize="20sp"/>
+
+</RelativeLayout>
+
+.java
+package com.example.allslipssolution;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText fullName, currentWeight, currentHeight, goalWeight, age, phoneNumber, address;
+    RadioGroup genderRadioGroup;
+    RadioButton selectedGender;
+    Button submitButton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        fullName = findViewById(R.id.edit_full_name);
+        currentWeight = findViewById(R.id.edit_current_weight);
+        currentHeight = findViewById(R.id.edit_current_height);
+        goalWeight = findViewById(R.id.edit_goal_weight);
+        age = findViewById(R.id.edit_age);
+        phoneNumber = findViewById(R.id.edit_phone_number);
+        address = findViewById(R.id.edit_address);
+
+        genderRadioGroup = findViewById(R.id.rg1);
+
+        submitButton = findViewById(R.id.btn_submit);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = fullName.getText().toString();
+                int selectedGenderId = genderRadioGroup.getCheckedRadioButtonId();
+                selectedGender = findViewById(selectedGenderId);
+                String gender = selectedGender.getText().toString();
+                String weight = currentWeight.getText().toString();
+                String height = currentHeight.getText().toString();
+                String goalWeightStr = goalWeight.getText().toString();
+                String ageStr = age.getText().toString();
+                String phone = phoneNumber.getText().toString();
+                String addr = address.getText().toString();
+                
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("Name", name);
+                intent.putExtra("Gender", gender);
+                intent.putExtra("Weight", weight);
+                intent.putExtra("Height", height);
+                intent.putExtra("GoalWeight", goalWeightStr);
+                intent.putExtra("Age", ageStr);
+                intent.putExtra("Phone", phone);
+                intent.putExtra("Address", addr);
+                startActivity(intent);
+            }
+        });
+    }
+}
+
+sec.java
+package com.example.allslipssolution;
+
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SecondActivity extends AppCompatActivity {
+
+    TextView nameTextView, genderTextView, weightTextView, heightTextView, goalWeightTextView, ageTextView, phoneTextView, addressTextView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+
+        nameTextView = findViewById(R.id.text_name);
+        genderTextView = findViewById(R.id.text_gender);
+        weightTextView = findViewById(R.id.text_weight);
+        heightTextView = findViewById(R.id.text_height);
+        goalWeightTextView = findViewById(R.id.text_goal_weight);
+        ageTextView = findViewById(R.id.text_age);
+        phoneTextView = findViewById(R.id.text_phone);
+        addressTextView = findViewById(R.id.text_address);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            nameTextView.setText("Name: " + extras.getString("Name"));
+            genderTextView.setText("Gender: " + extras.getString("Gender"));
+            weightTextView.setText("Weight: " + extras.getString("Weight"));
+            heightTextView.setText("Height: " + extras.getString("Height"));
+            goalWeightTextView.setText("Goal Weight: " + extras.getString("GoalWeight"));
+            ageTextView.setText("Age: " + extras.getString("Age"));
+            phoneTextView.setText("Phone: " + extras.getString("Phone"));
+            addressTextView.setText("Address: " + extras.getString("Address"));
+        }
+    }
+}
+
+
+
